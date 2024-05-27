@@ -1,48 +1,56 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jogodaadivinhacao;
 
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- *
- * @author aluno.saolucas
- */
 public class JogoDaAdivinhacao {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-         Scanner obj = new Scanner(System.in);
-        Random random = new Random();
 
-        int numero = 0;
-        int tentativas = 0;
-        int aleatorio = random.nextInt(10);
+        do {
+            Scanner obj = new Scanner(System.in);
+            Random random = new Random();
 
-        while (numero != aleatorio) {
-            tentativas ++;
-            System.out.println("Qual seu palpite?");
-            numero = obj.nextInt();
+            String nome;
+            int numero = 0;
+            int tentativas = 0;
+            int aleatorio = random.nextInt(10);
+            int afirmacao;
 
-            if (numero == aleatorio) {
-                System.out.println("Você acertou! Parabéns");
+            System.out.println("Olá, qual seu nome?");
+            nome = obj.nextLine();
 
-            } else if (numero < aleatorio) {
-                System.out.println("Tente um número maior");
+            System.out.println("Você realmente quer jogar? Digite 1 para: SIM e 2 para: NÃO");
+            afirmacao = obj.nextInt();
 
-            } else if (numero > aleatorio) {
-                System.out.println("Tente um número menor");
+            if (afirmacao == 1) {
+                System.out.println("Vamos começar!");
+
+            } else if (afirmacao == 2) {
+                System.out.println("Obrigada, tchau!");
+                break;
             }
-            System.out.println("Você tentou " + tentativas + " vezes");
-        }
+            while (numero != aleatorio) {
 
-        
-    }
+                tentativas++;
+                System.out.println("Qual seu palpite?");
+                numero = obj.nextInt();
+
+                if (numero == aleatorio) {
+                    System.out.println("Você acertou! Parabéns");
+
+                } else if (numero < aleatorio) {
+                    System.out.println("Tente um número maior");
+
+                } else if (numero > aleatorio) {
+                    System.out.println("Tente um número menor");
+                }
+                System.out.println("Você tentou " + tentativas + " vezes");
+            }
+               
+        }while (true);
+       
     
+    }
+
 }
